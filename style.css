@@ -1,18 +1,26 @@
 body {
-    margin: 0;
-    padding: 0;
+    margin: auto;
     display: flex;
     justify-content: center;
     padding-top: 50px;
 }
 
 #calc {
-  background: rgba(145, 126, 126, 0.2);
-  width: 480px;
-  border-radius: 10px;
-  box-shadow: 2px 4px 16px rgba(0,0,0,.2);
-  height: 700px;
-  padding: 20px;
-  gap: 20px;
-  display: flex;
+    background: rgba(145, 126, 126, 0.2);
+    width: 480px;
+    border-radius: 10px;
+    box-shadow: 2px 4px 16px rgba(0,0,0,.2);
+    height: 700px;
+    padding: 20px;
+
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.btn {
+    font-family: Roboto, sans-serif;
+    border: none;
+    border-radius: 8px;
+    background: #eee;
 }
