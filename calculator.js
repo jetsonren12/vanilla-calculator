@@ -1,29 +1,30 @@
-/**
- * Add
- * Subtract
- * Divide
- * Multiply
- */
-
 const add = (a,b) => a + b
 const subtract = (a,b) => b - a
-const multiple = (a,b) => a * b
+const multiply = (a,b) => a * b
 const divide = (a,b) => b / a
 
-
 let n1 = 1
-let n2 = 0
-let operand = ''
+let n2 = 31
+let operand = '*'
 
-console.log(add(n1,n2))
 
-// function operate(){
-//     switch (key) {
-//         case value:
-            
-//             break;
-    
-//         default:
-//             break;
-//     }
-// }
+function operate(a,b,operator){
+    switch (operator) {
+        case '+':
+            console.log(add(a,b))
+            break;
+        case '-':
+            console.log(subtract(a,b))
+            break;
+        case '*':
+            console.log(multiply(a,b))
+            break;
+        case '/':
+            console.log(divide(a,b))
+            break;
+        default:
+            break;
+    }
+}
+
+operate(n1,n2,operand)
