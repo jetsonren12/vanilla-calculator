@@ -1,19 +1,43 @@
 let mainContainer = document.querySelector('.main-container')
-let display = document.querySelector('#display')
+let displayContainer = document.querySelector('#display-container')
 
+let displayUpperHalf = document.createElement('div')
+displayUpperHalf.setAttribute('id', 'upper')
+let displayLowerHalf = document.createElement('div')
+displayLowerHalf.setAttribute('id', 'lower')
+
+let calFunctions = '<,Cl,%,/,7,8,9,x,4,5,6,-,1,2,3,+,+/-,0,.,='
+let n1 = ''
+let n2 = ''
+let operand = ''
 
 function createCalc(){
+    let num = 0
+    const cleanedSymbols = calFunctions.split(',').filter(c => c !== ',')
+    
     for(let x = 5; x > 0; x--){
         let btnContainer = document.createElement('div')
+        btnContainer.setAttribute('class', 'btn-container')
+        btnContainer.addEventListener('click', (e) => {
+            let n1 = e.target.innerText
+            displayUpperHalf.append(n1)
+            displayLowerHalf.append('Hello')
+        })
         mainContainer.append(btnContainer)
         for(let y = 4; y > 0; y--){
             let btn = document.createElement('button')
-            btn.innerText = 'button'
+            btn.innerText = `${cleanedSymbols[num]}`
+            num++
             btn.setAttribute('class','btn')
             btnContainer.append(btn)
         }
     }
+
 }
+
+
+
+
 
 createCalc()
 
@@ -21,11 +45,6 @@ const add = (a,b) => a + b
 const subtract = (a,b) => b - a
 const multiply = (a,b) => a * b
 const divide = (a,b) => b / a
-
-let n1 = 1
-let n2 = 31
-let operand = '*'
-
 
 function operate(a,b,operator){
     switch (operator) {
@@ -46,6 +65,7 @@ function operate(a,b,operator){
             }   
         }
                     
-operate(n1,n2,operand)
+// operate(n1,n2,operand)
 
-display.append(n1)
+displayContainer.append(displayUpperHalf)
+displayContainer.append(displayLowerHalf)
