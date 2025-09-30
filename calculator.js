@@ -12,31 +12,45 @@ let n2 = ''
 let operand = ''
 
 function createCalc(){
-    let num = 0
     const cleanedSymbols = calFunctions.split(',').filter(c => c !== ',')
-    
+    createBtns(cleanedSymbols)
+}
+
+
+function createBtns(sym){
+    let num = 0
     for(let x = 5; x > 0; x--){
         let btnContainer = document.createElement('div')
         btnContainer.setAttribute('class', 'btn-container')
-        btnContainer.addEventListener('click', (e) => {
-            let n1 = e.target.innerText
-            displayUpperHalf.append(n1)
-            displayLowerHalf.append('Hello')
-        })
         mainContainer.append(btnContainer)
         for(let y = 4; y > 0; y--){
             let btn = document.createElement('button')
-            btn.innerText = `${cleanedSymbols[num]}`
+            btn.innerText = `${sym[num]}`
             num++
-            btn.setAttribute('class','btn')
+            btn.innerText === '=' ? btn.setAttribute('id', 'equal') : btn.setAttribute('class','btn')
+            btn.addEventListener('click', (e) => {
+                toDisplay(e)
+            })
             btnContainer.append(btn)
         }
     }
-
+    let equal = document.querySelector('#equal')
+    console.log(equal);
+    
 }
 
 
 
+
+function toDisplay(e){
+    if(e.target.innerText === '='){
+        let input = document.querySelector('#upper')
+        console.log(input.innerText.split(' '))
+    } else {
+        displayUpperHalf.append(e.target.innerText)
+    }
+
+}
 
 
 createCalc()
@@ -46,26 +60,28 @@ const subtract = (a,b) => b - a
 const multiply = (a,b) => a * b
 const divide = (a,b) => b / a
 
-function operate(a,b,operator){
+function operate(a,operator,b){
     switch (operator) {
         case '+':
-            console.log(add(a,b))
+            add(a,b)
             break;
         case '-':
-            console.log(subtract(a,b))
+            subtract(a,b)
             break;
         case '*':
-            console.log(multiply(a,b))
+            multiply(a,b)
             break;
         case '/':
-            console.log(divide(a,b))
+            divide(a,b)
             break;
             default:
                 break;
-            }   
-        }
+    }   
+}
                     
-// operate(n1,n2,operand)
+
+
+
 
 displayContainer.append(displayUpperHalf)
 displayContainer.append(displayLowerHalf)
